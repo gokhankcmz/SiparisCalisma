@@ -6,7 +6,6 @@ namespace Entities.RequestModels
     {
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-        public string Status { get; set; } = "Placed.";
         public Product Product { get; set; }
     }
 }

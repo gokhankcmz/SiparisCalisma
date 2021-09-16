@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  customerservice:
+    image: ${DOCKER_REGISTRY-}customerservice
+    container_name: customerservice
+    build:
+      context: .
+      dockerfile: CustomerService/Dockerfile
+
+  orderservice:
+    image: ${DOCKER_REGISTRY-}orderservice
+    container_name: orderservice
+    build:
+      context: .
+      dockerfile: OrderService/Dockerfile
+
+
+  gateway:
+    image: ${DOCKER_REGISTRY-}gateway
+    container_name: gateway
+    build:
+      context: .
+      dockerfile: Gateway/Dockerfile
+
+  orderservicedb:
+    image: mongo
+    container_name: orderservicedb
+    volumes:
+      - orderservicedbvolume:/data/db
+    ports:
+      - 27018:27017
+      
+  customerservicedb:
+    image: mongo
+    container_name: customerservicedb
+    volumes:
+      - customerservicedbvolume:/data/db
+    ports:
+      - 27019:27017
+volumes:
+  orderservicedbvolume:
+  customerservicedbvolume:

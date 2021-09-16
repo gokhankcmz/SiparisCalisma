@@ -1,0 +1,41 @@
+services:
+  customerservice:
+    build:
+      context: C:\Users\gk-89\RiderProjects\OrderCase
+      dockerfile: CustomerService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: customerservice
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\gk-89\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  gateway:
+    build:
+      context: C:\Users\gk-89\RiderProjects\OrderCase
+      dockerfile: Gateway/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: gateway
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\gk-89\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  orderservice:
+    build:
+      context: C:\Users\gk-89\RiderProjects\OrderCase
+      dockerfile: OrderService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: orderservice
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\gk-89\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+version: '3.4'

@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=220c76ee_002D941c_002D4fa9_002D8d28_002D780d4f00d4b6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetCustomer_NotExistingId_ReturnsNotFound" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.CustomerControllerTests.GetCustomer_NotExistingId_ReturnsNotFound&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.ValidateCustomerExistAttributeTests.NonExistingCustomerId_ReturnsNotFound&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.ValidateCustomerExistAttributeTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.CustomerControllerTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

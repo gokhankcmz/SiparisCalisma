@@ -5,5 +5,12 @@
     &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.ValidateCustomerExistAttributeTests.NonExistingCustomerId_ReturnsNotFound&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.ValidateCustomerExistAttributeTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.CustomerControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2A0CAB9E-151E-47E5-80BA-71BA0EBAF2F3::net5.0::CustomerServiceTests.AddressControllerTests.GetCustomerAddress_ExistingCustomer_ReturnsOkObject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::3A953F07-BA29-437D-B894-9751635393B6::net5.0::OrderServiceTests.OrderControllerTests.GetCustomer_ExistingId_ReturnsOkObject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::3A953F07-BA29-437D-B894-9751635393B6::net5.0::OrderServiceTests.OrderControllerTests.GetAllOrders_ReturnsOkObject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::3A953F07-BA29-437D-B894-9751635393B6::net5.0::OrderServiceTests.OrderControllerTests.DeleteOrder_ReturnsOkObject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::3A953F07-BA29-437D-B894-9751635393B6::net5.0::OrderServiceTests.OrderControllerTests.UpdateOrder_ReturnsOkObject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::3A953F07-BA29-437D-B894-9751635393B6::net5.0::OrderServiceTests.ValidateOrderExistAttributeTests.NonExistingOrderId_ReturnsNotFound&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::3A953F07-BA29-437D-B894-9751635393B6::net5.0::OrderServiceTests.ProductControllerTests.GetOrderAddress_ExistingOrder_ReturnsOkObject&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

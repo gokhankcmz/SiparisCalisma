@@ -24,13 +24,10 @@ namespace OrderService.Controllers
             _mapper = mapper;
         }
 
-        #region # C #
-
         [HttpPost]
         [ServiceFilter(typeof(ValidateCustomerExistAttribute))]
         public async Task<IActionResult> CreateOrder([FromBody]CreateOrderDto createOrderDto)
         {
-            
             var orderEntity = _mapper.Map<Order>(createOrderDto);
             orderEntity.Address  = HttpContext.Items["address"] as Address;
             await _repository.CreateAsync(orderEntity);
@@ -38,9 +35,6 @@ namespace OrderService.Controllers
                  _mapper.Map<OrderResponseDto>(orderEntity));
         }
 
-        #endregion
-        
-        #region # R #
 
         [HttpGet("{orderId:guid}", Name = "OrderById")]
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
@@ -57,10 +51,6 @@ namespace OrderService.Controllers
             return Ok(_mapper.Map<List<OrderCollectionDto>>(orders));
         }
 
-        #endregion
-        
-        #region # U #
-
         [HttpPut("{orderId:guid}")]
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> UpdateOrder(Guid orderId, [FromBody] UpdateOrderDto updateOrderDto)
@@ -72,10 +62,6 @@ namespace OrderService.Controllers
         }
 
 
-        #endregion
-        
-        #region # D #
-
         [HttpDelete("{orderId:guid}")]
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> DeleteOrder(Guid orderId)
@@ -85,6 +71,5 @@ namespace OrderService.Controllers
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
         }
 
-        #endregion
     }
 }

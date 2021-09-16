@@ -28,5 +28,6 @@ namespace CustomerService.ValidationRules
             name = name.Replace("-", "");
             return name.All(Char.IsLetter);
         }
+
     }
 }

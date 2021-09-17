@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using CustomerService.Filters;
 using Entities.Models;
+using Entities.RequestModels;
 using Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,21 +16,23 @@ using Moq;
 using Repository;
 using Xunit;
 
-namespace CustomerServiceTests
+namespace CustomerServiceTests.FilterTests
 {
-    public class ValidateCustomerExistAttributeTests
+    public class ValidateEmailIsUniqueAttributeTests
     {
         private readonly Mock<IRepository<Customer>> _mockRepository = new();
         
-        [Fact]
-        public async Task NonExistingCustomerId_ReturnsNotFound()
+        [Theory]
+        [InlineData("POST")]
+        [InlineData("PUT")]
+        public async Task RegisteredEmail_ReturnsEmailNotUniqueException(string requestMethod)
         {
-            _mockRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<Guid>()))
-                .ReturnsAsync((Customer) null);
+            _mockRepository.Setup(x => x.GetByCondition(It.IsAny<Expression<Func<Customer, bool>>>()))
+                .ReturnsAsync(new List<Customer> {new ()});
             var modelState = new ModelStateDictionary();
             var httpContextMock = new DefaultHttpContext();
-            httpContextMock.Request.RouteValues.Add("customerId", It.IsAny<Guid>());
-            httpContextMock.Items.Add("customerId", It.IsAny<Guid>()); 
+            httpContextMock.Request.Method = requestMethod;
+            
             var actionContext = new ActionContext(
                 httpContextMock,
                 Mock.Of<RouteData>(),
@@ -42,12 +46,14 @@ namespace CustomerServiceTests
                 new Dictionary<string, object>(),
                 Mock.Of<Controller>()
             );
-            actionExecutingContext.ActionArguments.Add("customerId", It.IsAny<Guid>());
-            var vceAttribute = new ValidateCustomerExistAttribute(_mockRepository.Object);
+            if(requestMethod.Equals("POST")) actionExecutingContext.ActionArguments.Add("createCustomerDto",Mock.Of<CreateCustomerDto>());
+            if(requestMethod.Equals("PUT")) actionExecutingContext.ActionArguments.Add("updateCustomerDto",Mock.Of<UpdateCustomerDto>());
+            
+            var attribute = new ValidateEmailIsUniqueAttribute(_mockRepository.Object);
             var context = new ActionExecutedContext(actionContext, new List<IFilterMetadata>(), Mock.Of<Controller>());
 
             
-            await Assert.ThrowsAsync<NotFoundException>(()=> vceAttribute.OnActionExecutionAsync(actionExecutingContext, async () => { return context; }));
+            await Assert.ThrowsAsync<EmailIsNotUniqueException>(()=> attribute.OnActionExecutionAsync(actionExecutingContext, async () => { return context; }));
 
         }
     }

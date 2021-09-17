@@ -45,7 +45,7 @@ namespace CustomerService
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddSingleton<IRepository<Customer>, Repository<Customer>>();
             services.AddScoped<ValidateCustomerExistAttribute>(); //Transient?
-            //services.AddScoped<ValidateEmailIsUniqueAttribute>(); //Transient?
+            services.AddScoped<ValidateEmailIsUniqueAttribute>(); //Transient?
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

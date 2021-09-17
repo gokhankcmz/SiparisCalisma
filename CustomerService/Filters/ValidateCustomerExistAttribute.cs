@@ -20,14 +20,13 @@ namespace CustomerService.Filters
             ActionExecutionDelegate next)
         {
             var method = context.HttpContext.Request.Method;
-            if (method.Equals("POST")) return;
-            var customerId = (Guid)context.ActionArguments["customerId"];
-            var customer = await _repository.GetByIdAsync(customerId);
-            if (customer == null)
+            if (context.HttpContext.Request.RouteValues.ContainsKey("customerId"))
             {
-                throw new NotFoundException(nameof(Customer), customerId);
+                var customerId = (Guid) context.ActionArguments["customerId"];
+                var customer = await _repository.GetByIdAsync(customerId);
+                if (customer == null) throw new NotFoundException(nameof(Customer), customerId);
+                context.HttpContext.Items.Add("customer", customer);
             }
-            context.HttpContext.Items.Add("customer", customer);
             await next();
         }
     }

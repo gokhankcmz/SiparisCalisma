@@ -15,7 +15,8 @@ namespace CustomerService.Controllers
 {
     [Route("customers")]
     [ApiController]
-    
+    [ServiceFilter(typeof(ValidateCustomerExistAttribute))]
+    //[ServiceFilter(typeof(ValidateEmailIsUniqueAttribute))]
     public class CustomersController : ControllerBase
     {
         private IRepository<Customer> _repository;
@@ -30,12 +31,13 @@ namespace CustomerService.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCustomer([FromBody]CreateCustomerDto createCustomerDto)
         {
+            
             var customerEntity = (await _repository.GetByCondition(x=> x.Email==createCustomerDto.Email)).FirstOrDefault();
             if (customerEntity != null)
             {
                 throw new EmailIsNotUniqueException(nameof(Customer), createCustomerDto.Email);
             }
-            
+
             customerEntity = _mapper.Map<Customer>(createCustomerDto);
             await _repository.CreateAsync(customerEntity);
             return CreatedAtRoute("CustomerById", new { customerId = customerEntity.Id },
@@ -44,7 +46,6 @@ namespace CustomerService.Controllers
 
         
         [HttpGet("{customerId:guid}", Name = "CustomerById")]
-        [ServiceFilter(typeof(ValidateCustomerExistAttribute))]
         public async Task<IActionResult> GetCustomer(Guid customerId)
         {
             var customerEntity = await _repository.GetByIdAsync(customerId);
@@ -61,15 +62,14 @@ namespace CustomerService.Controllers
 
         
         [HttpPut("{customerId:guid}")]
-        [ServiceFilter(typeof(ValidateCustomerExistAttribute))]
         public async Task<IActionResult> UpdateCustomer(Guid customerId, [FromBody] UpdateCustomerDto updateCustomerDto)
         {
+            
             var customerEntity = (await _repository.GetByCondition(x=> x.Email==updateCustomerDto.Email)).FirstOrDefault();
             if (customerEntity != null)
             {
                 throw new EmailIsNotUniqueException(nameof(Customer), updateCustomerDto.Email);
             }
-            
             customerEntity = await _repository.GetByIdAsync(customerId);
             _mapper.Map(updateCustomerDto, customerEntity);
             await _repository.ReplaceAsync(customerEntity);
@@ -78,7 +78,6 @@ namespace CustomerService.Controllers
 
 
         [HttpDelete("{customerId:guid}")]
-        [ServiceFilter(typeof(ValidateCustomerExistAttribute))]
         public async Task<IActionResult> DeleteCustomer(Guid customerId)
         {
             var customerEntity = await _repository.GetByIdAsync(customerId);

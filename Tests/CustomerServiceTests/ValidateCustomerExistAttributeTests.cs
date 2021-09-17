@@ -27,6 +27,7 @@ namespace CustomerServiceTests
                 .ReturnsAsync((Customer) null);
             var modelState = new ModelStateDictionary();
             var httpContextMock = new DefaultHttpContext();
+            httpContextMock.Request.RouteValues.Add("customerId", It.IsAny<Guid>());
             httpContextMock.Items.Add("customerId", It.IsAny<Guid>()); 
             var actionContext = new ActionContext(
                 httpContextMock,

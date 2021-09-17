@@ -10,8 +10,7 @@ namespace OrderService.ValidationRules
             RuleFor(c => c.Quantity)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("{PropertyName} is empty.")
-                .GreaterThan(0).WithMessage("{PropertyName} must be greater than 0.")
-                .LessThan(999).WithMessage("{PropertyName} must be lower than 999");
+                .Quantity(0, 999);
             
             RuleFor(c => c.Price)
                 .Cascade(CascadeMode.Stop)

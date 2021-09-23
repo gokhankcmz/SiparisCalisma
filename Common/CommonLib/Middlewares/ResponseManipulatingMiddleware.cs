@@ -28,6 +28,8 @@ namespace CommonLib.Middlewares
                     throw new NotFound();
                 case 401:
                     throw new UnAuthorized();
+                case 400:
+                    throw new BadRequest();
             }
         }
     }

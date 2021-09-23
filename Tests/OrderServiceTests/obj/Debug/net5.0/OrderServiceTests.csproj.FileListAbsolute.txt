@@ -121,13 +121,11 @@ C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\Entities.dll
-C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\Exceptions.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\OrderService.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\Repository.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\OrderService.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\Repository.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\Entities.pdb
-C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\Exceptions.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\OrderServiceTests.csproj.AssemblyReference.cache
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\OrderServiceTests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\OrderServiceTests.AssemblyInfoInputs.cache
@@ -138,3 +136,5 @@ C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\ref\OrderServiceTests.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\OrderServiceTests.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\obj\Debug\net5.0\OrderServiceTests.genruntimeconfig.cache
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\ErrorHandling.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\OrderServiceTests\bin\Debug\net5.0\ErrorHandling.pdb

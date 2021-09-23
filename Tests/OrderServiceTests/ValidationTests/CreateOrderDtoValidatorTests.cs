@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Entities.RequestModels;
-using FluentValidation.TestHelper;
-using OrderService.ValidationRules;
 using Xunit;
 
 namespace OrderServiceTests.ValidationTests

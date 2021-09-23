@@ -34,7 +34,7 @@
       "OrderService/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "Exceptions": "1.0.0",
+          "ErrorHandling": "1.0.0",
           "FluentValidation.AspNetCore": "10.3.3",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.13",
           "Repository": "1.0.0",
@@ -1130,16 +1130,16 @@
           "Entities.dll": {}
         }
       },
-      "Exceptions/1.0.0": {
+      "ErrorHandling/1.0.0": {
         "dependencies": {
           "FluentValidation": "10.3.3",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
         },
         "runtime": {
-          "Exceptions.dll": {}
+          "ErrorHandling.dll": {}
         },
         "compile": {
-          "Exceptions.dll": {}
+          "ErrorHandling.dll": {}
         }
       },
       "Repository/1.0.0": {
@@ -3495,7 +3495,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Exceptions/1.0.0": {
+    "ErrorHandling/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

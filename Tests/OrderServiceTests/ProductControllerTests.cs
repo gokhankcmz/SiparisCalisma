@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AutoMapper;
-using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using OrderService.Controllers;
-using OrderService.Utility;
-using Repository;
 using Xunit;
 
 namespace OrderServiceTests

@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
-using CustomerService.Controllers;
-using CustomerService.Utility;
-using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Repository;
 using Xunit;
 
 namespace CustomerServiceTests
 {
     public class AddressControllerTests
     {
-        private readonly Mock<IRepository<Customer>> _mockRepository = new();
+        private readonly Mock<IApplicationService> _applicationService = new();
         private readonly IMapper _mapper;
 
         public AddressControllerTests()
@@ -29,9 +25,9 @@ namespace CustomerServiceTests
         [Fact]
         public async Task GetCustomerAddress_ExistingCustomer_ReturnsOkObject()
         {
-            _mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>()))
+            _applicationService.Setup(r => r.GetAsync(It.IsAny<Guid>()))
                 .ReturnsAsync(new Customer());
-            var addressController = new AddressController(_mockRepository.Object, _mapper);
+            var addressController = new AddressController(_applicationService.Object, _mapper);
             var result = await addressController.GetCustomerAddress(Guid.NewGuid());
 
             Assert.IsType<OkObjectResult>(result);

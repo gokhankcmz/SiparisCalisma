@@ -1,41 +1,103 @@
+networks:
+  docker-network:
+    driver: bridge
 services:
   customerservice:
     build:
       context: C:\Users\gk-89\RiderProjects\OrderCase
       dockerfile: CustomerService/Dockerfile
+    container_name: customerservice
+    depends_on:
+      elasticsearch:
+        condition: service_started
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_URLS: ;http://+:80
     image: customerservice
+    networks:
+      docker-network: {}
     ports:
-    - target: 80
-    - target: 443
+    - published: 8001
+      target: 80
     volumes:
     - C:\Users\gk-89\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  elasticsearch:
+    container_name: elasticsearch
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      bootstrap.memory_lock: "true"
+      cluster.name: docker-cluster
+      discovery.type: single-node
+      discovery.zen.minimum_master_nodes: '1'
+      node.name: elasticsearch
+    image: elasticsearch:7.14.1
+    networks:
+      docker-network: {}
+    ports:
+    - published: 9200
+      target: 9200
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+    volumes:
+    - elasticsearch-data:/usr/share/elasticsearch/data:rw
   gateway:
     build:
       context: C:\Users\gk-89\RiderProjects\OrderCase
       dockerfile: Gateway/Dockerfile
+    container_name: gateway
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_URLS: http://+:80
     image: gateway
+    networks:
+      docker-network: {}
     ports:
-    - target: 80
-    - target: 443
+    - published: 8000
+      target: 80
     volumes:
     - C:\Users\gk-89\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+  kibana:
+    container_name: kibana
+    depends_on:
+      elasticsearch:
+        condition: service_started
+    environment:
+      elasticsearch.hosts: http://elasticsearch:9200
+      elasticsearch.url: http://elasticsearch:9200
+      xpack.graph.enabled: "false"
+      xpack.grokdebugger.enabled: "false"
+      xpack.ml.enabled: "false"
+      xpack.monitoring.enabled: "false"
+      xpack.reporting.enabled: "false"
+      xpack.security.enabled: "false"
+    image: kibana:7.14.1
+    networks:
+      docker-network: {}
+    ports:
+    - published: 5601
+      target: 5601
   orderservice:
     build:
       context: C:\Users\gk-89\RiderProjects\OrderCase
       dockerfile: OrderService/Dockerfile
+    container_name: orderservice
+    depends_on:
+      elasticsearch:
+        condition: service_started
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_URLS: ;http://+:80
     image: orderservice
+    networks:
+      docker-network: {}
     ports:
-    - target: 80
-    - target: 443
+    - published: 8002
+      target: 80
     volumes:
     - C:\Users\gk-89\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
 version: '3.4'
+volumes:
+  elasticsearch-data:
+    driver: local

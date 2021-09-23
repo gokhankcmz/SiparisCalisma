@@ -4,16 +4,20 @@ services:
   customerservice:
     image: ${DOCKER_REGISTRY-}customerservice
     container_name: customerservice
+    depends_on:
+      - elasticsearch
     build:
       context: .
-      dockerfile: CustomerService/Dockerfile
+      dockerfile: Services/CustomerService/Dockerfile
 
   orderservice:
     image: ${DOCKER_REGISTRY-}orderservice
+    depends_on:
+      - elasticsearch
     container_name: orderservice
     build:
       context: .
-      dockerfile: OrderService/Dockerfile
+      dockerfile: Services/OrderService/Dockerfile
 
 
   gateway:
@@ -21,23 +25,23 @@ services:
     container_name: gateway
     build:
       context: .
-      dockerfile: Gateway/Dockerfile
+      dockerfile: Services/Gateway/Dockerfile
 
-  orderservicedb:
-    image: mongo
-    container_name: orderservicedb
-    volumes:
-      - orderservicedbvolume:/data/db
-    ports:
-      - 27018:27017
+
+  elasticsearch:
+    image: elasticsearch:7.14.1
+    container_name: elasticsearch
       
-  customerservicedb:
-    image: mongo
-    container_name: customerservicedb
-    volumes:
-      - customerservicedbvolume:/data/db
-    ports:
-      - 27019:27017
+  kibana:
+    image: kibana:7.14.1
+    container_name: kibana
+
+
+
+
 volumes:
-  orderservicedbvolume:
-  customerservicedbvolume:
+  elasticsearch-data:
+    driver: local
+networks:
+  docker-network:
+    driver: bridge

@@ -122,12 +122,10 @@ C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\CustomerService.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Entities.dll
-C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Exceptions.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Repository.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\CustomerService.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Repository.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Entities.pdb
-C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Exceptions.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\obj\Debug\net5.0\CustomerServiceTests.csproj.AssemblyReference.cache
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\obj\Debug\net5.0\CustomerServiceTests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\obj\Debug\net5.0\CustomerServiceTests.AssemblyInfoInputs.cache
@@ -142,3 +140,12 @@ C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\ErrorHandling.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\ErrorHandling.pdb
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Tests\CustomerServiceTests\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

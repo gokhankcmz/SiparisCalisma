@@ -3455,7 +3455,10 @@
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "5.0.1",
-          "Newtonsoft.Json": "13.0.1"
+          "Newtonsoft.Json": "13.0.1",
+          "Serilog.AspNetCore": "4.1.0",
+          "Serilog.Enrichers.Environment": "2.2.0",
+          "Serilog.Sinks.Elasticsearch": "8.4.1"
         },
         "compile": {
           "bin/placeholder/CommonLib.dll": {}
@@ -10239,9 +10242,6 @@
       "FluentValidation.AspNetCore >= 10.3.3",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.13",
       "Repository >= 1.0.0",
-      "Serilog.AspNetCore >= 4.1.0",
-      "Serilog.Enrichers.Environment >= 2.2.0",
-      "Serilog.Sinks.Elasticsearch >= 8.4.1",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -10320,18 +10320,6 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
             "target": "Package",
             "version": "[1.10.13, )"
-          },
-          "Serilog.AspNetCore": {
-            "target": "Package",
-            "version": "[4.1.0, )"
-          },
-          "Serilog.Enrichers.Environment": {
-            "target": "Package",
-            "version": "[2.2.0, )"
-          },
-          "Serilog.Sinks.Elasticsearch": {
-            "target": "Package",
-            "version": "[8.4.1, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

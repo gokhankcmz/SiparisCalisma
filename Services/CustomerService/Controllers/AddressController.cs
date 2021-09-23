@@ -25,8 +25,6 @@ namespace CustomerService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCustomerAddress([FromRoute]Guid customerId)
         {
-            // var token = Request.Headers["Authorization"];
-            // var idFromToken = _applicationService.ReadIdFromToken(token);
             var idFromToken = Request.Headers.GetClaimOrThrow("nameid");
             if (!idFromToken.Equals(customerId.ToString()))
             {

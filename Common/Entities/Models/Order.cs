@@ -1,4 +1,5 @@
 ﻿using System;
+using CommonLib.Models;
 
 namespace Entities.Models
 {

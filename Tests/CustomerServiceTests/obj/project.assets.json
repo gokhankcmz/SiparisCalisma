@@ -11582,23 +11582,23 @@
     },
     "CommonLib/1.0.0": {
       "type": "project",
-      "path": "../../CommonLib/CommonLib.csproj",
-      "msbuildProject": "../../CommonLib/CommonLib.csproj"
+      "path": "../../Common/CommonLib/CommonLib.csproj",
+      "msbuildProject": "../../Common/CommonLib/CommonLib.csproj"
     },
     "CustomerService/1.0.0": {
       "type": "project",
-      "path": "../../CustomerService/CustomerService.csproj",
-      "msbuildProject": "../../CustomerService/CustomerService.csproj"
+      "path": "../../Services/CustomerService/CustomerService.csproj",
+      "msbuildProject": "../../Services/CustomerService/CustomerService.csproj"
     },
     "Entities/1.0.0": {
       "type": "project",
-      "path": "../../Entities/Entities.csproj",
-      "msbuildProject": "../../Entities/Entities.csproj"
+      "path": "../../Common/Entities/Entities.csproj",
+      "msbuildProject": "../../Common/Entities/Entities.csproj"
     },
     "Repository/1.0.0": {
       "type": "project",
-      "path": "../../Repository/Repository.csproj",
-      "msbuildProject": "../../Repository/Repository.csproj"
+      "path": "../../Common/Repository/Repository.csproj",
+      "msbuildProject": "../../Common/Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11607,7 +11607,6 @@
       "FluentAssertions >= 6.1.0",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "Moq >= 4.16.1",
-      "Repository >= 1.0.0",
       "coverlet.collector >= 3.0.2",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.3"
@@ -11648,8 +11647,8 @@
             "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\CustomerService\\CustomerService.csproj": {
               "projectPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\CustomerService\\CustomerService.csproj"
             },
-            "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Repository\\Repository.csproj": {
-              "projectPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Repository\\Repository.csproj"
+            "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Services\\CustomerService\\CustomerService.csproj": {
+              "projectPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Services\\CustomerService\\CustomerService.csproj"
             }
           }
         }

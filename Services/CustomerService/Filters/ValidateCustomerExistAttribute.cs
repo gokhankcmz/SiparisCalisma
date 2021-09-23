@@ -3,17 +3,16 @@ using System.Threading.Tasks;
 using CommonLib.Models.ErrorModels;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Repository;
 
 namespace CustomerService.Filters
 {
     public class ValidateCustomerExistAttribute : IAsyncActionFilter
     {
-        private IRepository<Customer> _repository;
+        private IApplicationService _applicationService;
 
-        public ValidateCustomerExistAttribute(IRepository<Customer> repository)
+        public ValidateCustomerExistAttribute(IApplicationService applicationService)
         {
-            _repository = repository;
+            _applicationService = applicationService;
         }
         
         public async Task OnActionExecutionAsync(ActionExecutingContext context,
@@ -23,7 +22,7 @@ namespace CustomerService.Filters
             if (context.HttpContext.Request.RouteValues.ContainsKey("customerId"))
             {
                 var customerId = (Guid) context.ActionArguments["customerId"];
-                var customer = await _repository.GetByIdAsync(customerId);
+                var customer = await _applicationService.GetAsync(customerId);
                 if (customer == null) throw new NotFound(nameof(Customer), customerId.ToString());
                 context.HttpContext.Items.Add("customer", customer);
             }

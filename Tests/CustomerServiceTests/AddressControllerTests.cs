@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using CustomerService;
+using CustomerService.Controllers;
+using CustomerService.Utility;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;

@@ -2,7 +2,7 @@
 using Entities.RequestModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerService.Controllers
+namespace OrderService.Controllers
 {
     [Route("token")]
     [ApiController]

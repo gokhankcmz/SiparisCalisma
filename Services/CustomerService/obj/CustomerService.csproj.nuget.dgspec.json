@@ -71,6 +71,18 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[8.4.1, )"
             }
           },
           "imports": [
@@ -302,18 +314,6 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.10.13, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[4.1.0, )"
-            },
-            "Serilog.Enrichers.Environment": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Serilog.Sinks.Elasticsearch": {
-              "target": "Package",
-              "version": "[8.4.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -3,7 +3,6 @@ using System.Reflection;
 using CommonLib.Helpers.Jwt;
 using CommonLib.Middlewares;
 using CustomerService.Filters;
-using CustomerService.HealthChecks;
 using CustomerService.Utility;
 using Entities.Models;
 using FluentValidation.AspNetCore;
@@ -73,8 +72,13 @@ namespace CustomerService
                 app.UseDeveloperExceptionPage();
             }
 
+            
+            
+            app.UseErrorLogger();
             app.UseCustomErrorHandler();
             app.UseResponseManipulation();
+            
+            
             
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerService v1"));
@@ -91,11 +95,6 @@ namespace CustomerService
                 endpoints.MapHealthChecks("/quickhealth", new HealthCheckOptions()
                 {
                     Predicate = _ => false
-                });
-                endpoints.MapHealthChecks("/health/services", new HealthCheckOptions()
-                {
-                    Predicate = reg=> reg.Tags.Contains("service"),
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
                 endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {

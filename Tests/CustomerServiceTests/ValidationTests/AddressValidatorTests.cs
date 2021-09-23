@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CustomerService.ValidationRules;
+using Entities.Models;
+using FluentValidation.TestHelper;
 using Xunit;
 
 namespace CustomerServiceTests.ValidationTests

@@ -1,4 +1,6 @@
-﻿namespace Entities.Models
+﻿using CommonLib.Models;
+
+namespace Entities.Models
 {
     
     public class Customer : Document

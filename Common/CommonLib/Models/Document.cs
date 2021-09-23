@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Entities.Models
+namespace CommonLib.Models
 {
     public class Document
     {

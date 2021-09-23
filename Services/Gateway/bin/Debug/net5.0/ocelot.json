@@ -1,0 +1,130 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/customers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/customers",
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "SwaggerKey": "customers"
+    },
+    
+    {
+      "DownstreamPathTemplate": "/customers/{customerId}/address",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/customers/{customerId}/address",
+      "UpstreamHttpMethod": ["GET"],
+      "SwaggerKey": "customers"
+    },
+
+    {
+      "DownstreamPathTemplate": "/customers/{customerId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/customers/{customerId}",
+      "UpstreamHttpMethod": ["GET","DELETE","PUT"],
+      "SwaggerKey": "customers"
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/customers/{customerId}/validation",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/customers/{customerId}/validation",
+      "UpstreamHttpMethod": ["PUT"],
+      "SwaggerKey": "customers"
+    },
+
+    {
+      "DownstreamPathTemplate": "/orders/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orderservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/orders/",
+      "UpstreamHttpMethod": ["POST", "GET"],
+      "SwaggerKey": "orders"
+    },
+
+    {
+      "DownstreamPathTemplate": "/orders/{orderId}/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orderservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/orders/{orderId}/product",
+      "UpstreamHttpMethod": ["GET"],
+      "SwaggerKey": "orders"
+    },
+
+    {
+      "DownstreamPathTemplate": "/orders/{orderId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orderservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/orders/{orderId}/",
+      "UpstreamHttpMethod": ["GET", "PUT", "DELETE"],
+      "SwaggerKey": "orders"
+    }
+  ],
+  
+  
+  
+  "SwaggerEndPoints": [
+    {
+      "Key": "orders",
+      "Config": [
+        {
+          "Name": "Orders API",
+          "Version": "v1",
+          "Url": "http://orderservice:80/swagger/v1/swagger.json"
+        }
+      ]
+    },
+
+    {
+      "Key": "customers",
+      "Config": [
+        {
+          "Name": "Customers API",
+          "Version": "v1",
+          "Url": "http://customerservice:80/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}

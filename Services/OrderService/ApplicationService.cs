@@ -7,6 +7,7 @@ using CommonLib.Helpers.Jwt;
 using CommonLib.Models.ErrorModels;
 using Entities.Models;
 using Entities.RequestModels;
+using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Repository;
 
@@ -64,9 +65,14 @@ namespace OrderService
             return token;
         }
 
-        public string ReadIdFromToken(string token)
+        public void CheckIfSelfOrder(Order order, Guid customerId)
         {
-            return _authManager.ReadIdFromToken(token.Replace("Bearer ",""));
+            if (customerId.Equals(order.CustomerId))
+            {
+                throw new UnAuthorized();
+            }
         }
+
+
     }
 }

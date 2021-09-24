@@ -19,6 +19,5 @@ namespace OrderService
 
         Task<string> GetToken(AuthDto authDto);
 
-        string ReadIdFromToken(string token);
     }
 }

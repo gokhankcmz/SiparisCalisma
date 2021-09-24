@@ -40,6 +40,7 @@ namespace CommonLib.Helpers.Jwt
         public static string GetClaimOrThrow(this IHeaderDictionary headerDictionary, string claimType, Exception exception=null)
         {
             var token = headerDictionary["Authorization"].ToString();
+            token = token.Replace("Bearer ", "");
             exception ??= new UnAuthorized();
             try
             {

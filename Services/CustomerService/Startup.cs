@@ -87,6 +87,8 @@ namespace CustomerService
             app.UseSerilogRequestLogging();
             app.UseRouting();
 
+
+            app.UseCustomerValidation();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using CommonLib.Models.ErrorModels;
 using Entities.Models;
 using Entities.RequestModels;
 using Entities.ResponseModels;
@@ -41,6 +42,7 @@ namespace OrderService.Controllers
         public async Task<IActionResult> GetOrder(Guid orderId)
         {
             var orderEntity = await _applicationService.GetAsync(orderId);
+            _applicationService.CheckIfSelfOrder(orderEntity, (Guid) HttpContext.Items["customerId"]);
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
         }
 
@@ -56,6 +58,7 @@ namespace OrderService.Controllers
         public async Task<IActionResult> UpdateOrder(Guid orderId, [FromBody] UpdateOrderDto updateOrderDto)
         {
             var orderEntity = await _applicationService.GetAsync(orderId);
+            _applicationService.CheckIfSelfOrder(orderEntity, (Guid) HttpContext.Items["customerId"]);
             _mapper.Map(updateOrderDto, orderEntity);
             await _applicationService.ReplaceAsync(orderEntity);
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
@@ -67,6 +70,7 @@ namespace OrderService.Controllers
         public async Task<IActionResult> DeleteOrder(Guid orderId)
         {
             var orderEntity = await _applicationService.GetAsync(orderId);
+            _applicationService.CheckIfSelfOrder(orderEntity, (Guid) HttpContext.Items["customerId"]);
             _applicationService.Delete(orderEntity);
             //return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
             return Ok();

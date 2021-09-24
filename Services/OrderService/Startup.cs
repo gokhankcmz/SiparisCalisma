@@ -82,7 +82,7 @@ namespace OrderService
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseCustomerIdFromToken();
+            app.UseCustomerValidation();
             
             app.UseSerilogRequestLogging();
             app.UseAuthorization();

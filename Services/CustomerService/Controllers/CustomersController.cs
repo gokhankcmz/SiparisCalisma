@@ -25,7 +25,6 @@ namespace CustomerService.Controllers
             _applicationService = applicationService;
             _mapper = mapper;
             _logger = logger;
-            _logger.Error("this is a test log. logger started.");
         }
 
         [HttpPost]

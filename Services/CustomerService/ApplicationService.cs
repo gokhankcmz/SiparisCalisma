@@ -53,7 +53,7 @@ namespace CustomerService
             return await _repository.GetAll();
         }
 
-        public async Task<string> GetToken(AuthDto authDto)
+        public async Task<string> CreateToken(AuthDto authDto)
         {
             var customer = (await _repository.GetByCondition(x => x.Id.Equals(authDto.Id) && x.Email.Equals(authDto.email))).FirstOrDefault();
             if (customer == null)
@@ -64,9 +64,5 @@ namespace CustomerService
             return token;
         }
 
-        public string ReadIdFromToken(string token)
-        {
-            return _authManager.ReadIdFromToken(token.Replace("Bearer ",""));
-        }
     }
 }

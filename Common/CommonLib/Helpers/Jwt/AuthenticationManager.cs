@@ -40,24 +40,7 @@ namespace CommonLib.Helpers.Jwt
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
-        public string ReadIdFromToken(string token)
-        {
-            var nameIdClaim = GetClaimsIfValid(token)
-                .FirstOrDefault(x => x.Type.Equals("nameid"));
-            if(nameIdClaim == null) throw new InvalidToken(token);
-            return nameIdClaim.Value;
-        }
         
-
-        public IEnumerable<Claim> GetClaimsIfValid(string token)
-        {
-            if (token == null) throw new InvalidToken();
-            var tokenDecoded = new JwtSecurityToken(token);
-            if (tokenDecoded.ValidTo < DateTime.UtcNow) throw new InvalidToken(token);
-            return tokenDecoded.Claims;
-        }
-
 
         private SigningCredentials GetSigningCredentials()
         {

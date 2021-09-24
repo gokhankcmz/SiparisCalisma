@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Http.Extensions;
 
 namespace OrderService
 {
-    public class CustomerIdFromTokenMiddleware
+    public class CustomerValidationMiddleware
     {
         private RequestDelegate _next;
 
-        public CustomerIdFromTokenMiddleware(RequestDelegate next)
+        public CustomerValidationMiddleware(RequestDelegate next)
         {
             _next = next;
         }
@@ -28,7 +28,6 @@ namespace OrderService
             {
                 var idFromToken = request.Headers.GetClaimOrThrow("nameid");
                 httpContext.Items.Add("customerId", idFromToken);
-                
             }
             await _next.Invoke(httpContext);
         }
@@ -38,8 +37,8 @@ namespace OrderService
 
     public static class CustomerIdFromTokenMiddlewareExtension
     {
-        public static IApplicationBuilder UseCustomerIdFromToken(this IApplicationBuilder applicationBuilder) =>
-            applicationBuilder.UseMiddleware<CustomerIdFromTokenMiddleware>();
+        public static IApplicationBuilder UseCustomerValidation(this IApplicationBuilder applicationBuilder) =>
+            applicationBuilder.UseMiddleware<CustomerValidationMiddleware>();
     }
 
 }

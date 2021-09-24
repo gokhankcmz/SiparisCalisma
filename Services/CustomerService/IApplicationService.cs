@@ -17,8 +17,7 @@ namespace CustomerService
         Task<List<Customer>> GetByConditionAsync(Expression<Func<Customer, bool>> expression);
         Task<List<Customer>> GetAllAsync();
 
-        Task<string> GetToken(AuthDto authDto);
+        Task<string> CreateToken(AuthDto authDto);
 
-        string ReadIdFromToken(string token);
     }
 }

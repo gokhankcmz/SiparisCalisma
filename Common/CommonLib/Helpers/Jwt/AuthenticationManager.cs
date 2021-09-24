@@ -68,26 +68,4 @@ namespace CommonLib.Helpers.Jwt
         }
     }
 
-    public static class JwtHelper2
-    {
-
-        public static string GetClaimOrThrow(this IHeaderDictionary headerDictionary, string claimType, Exception exception=null)
-        {
-            var token = headerDictionary["Authorization"].ToString();
-            exception ??= new UnAuthorized();
-            try
-            {
-                var tokenDecoded = new JwtSecurityToken(token);
-                if (tokenDecoded.ValidTo < DateTime.UtcNow) throw exception;
-                Claim claim = tokenDecoded.Claims.FirstOrDefault(x => x.Type.Equals(claimType));
-                return claim.Value;
-
-            }
-            catch (Exception e)
-            {
-                throw exception;
-            }
-
-        }
-    }
 }

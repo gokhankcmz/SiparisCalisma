@@ -1,5 +1,11 @@
-﻿using System.Text;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using CommonLib.Models.ErrorModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -29,6 +35,25 @@ namespace CommonLib.Helpers.Jwt
                             SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                     };
                 });
+        }
+        
+        public static string GetClaimOrThrow(this IHeaderDictionary headerDictionary, string claimType, Exception exception=null)
+        {
+            var token = headerDictionary["Authorization"].ToString();
+            exception ??= new UnAuthorized();
+            try
+            {
+                var tokenDecoded = new JwtSecurityToken(token);
+                if (tokenDecoded.ValidTo < DateTime.UtcNow) throw exception;
+                Claim claim = tokenDecoded.Claims.FirstOrDefault(x => x.Type.Equals(claimType));
+                return claim.Value;
+
+            }
+            catch (Exception e)
+            {
+                throw exception;
+            }
+
         }
     }
 }

@@ -15,12 +15,12 @@ namespace OrderService.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private IRepository<Order> _repository;
+        private ApplicationService _applicationService;
         private IMapper _mapper;
 
-        public OrdersController(IRepository<Order> repository, IMapper mapper)
+        public OrdersController(ApplicationService applicationService, IMapper mapper)
         {
-            _repository = repository;
+            _applicationService = applicationService;
             _mapper = mapper;
         }
 
@@ -30,7 +30,7 @@ namespace OrderService.Controllers
         {
             var orderEntity = _mapper.Map<Order>(createOrderDto);
             orderEntity.Address  = HttpContext.Items["address"] as Address;
-            await _repository.CreateAsync(orderEntity);
+            await _applicationService.CreateAsync(orderEntity);
              return CreatedAtRoute("OrderById", new { orderId = orderEntity.Id },
                  _mapper.Map<OrderResponseDto>(orderEntity));
         }
@@ -40,14 +40,14 @@ namespace OrderService.Controllers
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> GetOrder(Guid orderId)
         {
-            var orderEntity = await _repository.GetByIdAsync(orderId);
+            var orderEntity = await _applicationService.GetAsync(orderId);
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllOrders()
         {
-            var orders = await _repository.GetAll();
+            var orders = await _applicationService.GetAllAsync();
             return Ok(_mapper.Map<List<OrderCollectionDto>>(orders));
         }
 
@@ -55,9 +55,9 @@ namespace OrderService.Controllers
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> UpdateOrder(Guid orderId, [FromBody] UpdateOrderDto updateOrderDto)
         {
-            var orderEntity = await _repository.GetByIdAsync(orderId);
+            var orderEntity = await _applicationService.GetAsync(orderId);
             _mapper.Map(updateOrderDto, orderEntity);
-            await _repository.ReplaceAsync(orderEntity);
+            await _applicationService.ReplaceAsync(orderEntity);
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
         }
 
@@ -66,9 +66,10 @@ namespace OrderService.Controllers
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> DeleteOrder(Guid orderId)
         {
-            var orderEntity = await _repository.GetByIdAsync(orderId);
-            _repository.Delete(orderEntity);
-            return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
+            var orderEntity = await _applicationService.GetAsync(orderId);
+            _applicationService.Delete(orderEntity);
+            //return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
+            return Ok();
         }
 
     }

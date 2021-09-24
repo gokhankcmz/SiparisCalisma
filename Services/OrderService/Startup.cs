@@ -51,7 +51,7 @@ namespace OrderService
             services.AddScoped<ValidateOrderExistAttribute>();
             services.AddScoped<ValidateCustomerExistAttribute>();
             services.AddSingleton<IApplicationService, ApplicationService>();
-            
+            services.ConfigureJwt(Configuration);
             services.AddSingleton<AuthenticationManager<Order>>();
 
             services.AddHealthChecks()
@@ -75,7 +75,6 @@ namespace OrderService
             app.UseErrorLogger();
             app.UseCustomErrorHandler();
             app.UseResponseManipulation();
-            app.UseCustomerValidator();
             
             
             app.UseSwagger();
@@ -83,6 +82,8 @@ namespace OrderService
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseCustomerIdFromToken();
+            
             app.UseSerilogRequestLogging();
             app.UseAuthorization();
             app.UseAuthentication();

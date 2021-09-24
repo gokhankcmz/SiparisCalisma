@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using CommonLib.Helpers.Jwt;
 using CommonLib.Middlewares;
@@ -48,11 +49,7 @@ namespace CustomerService
                     name: "MongoDb",
                     tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3));
             
-            
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "CustomerService", Version = "v1"});
-            });
+            services.AddSwagger();
             services.AddMongo(Configuration, mongoSettings);
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddSingleton<IRepository<Customer>, Repository<Customer>>();
@@ -86,8 +83,7 @@ namespace CustomerService
             app.UseHttpsRedirection();
             app.UseSerilogRequestLogging();
             app.UseRouting();
-
-
+            
             app.UseCustomerTokenValidation();
             app.UseAuthorization();
 

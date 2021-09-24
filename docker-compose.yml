@@ -23,6 +23,9 @@ services:
   gateway:
     image: ${DOCKER_REGISTRY-}gateway
     container_name: gateway
+    depends_on:
+      - customerservice
+      - orderservice
     build:
       context: .
       dockerfile: Services/Gateway/Dockerfile

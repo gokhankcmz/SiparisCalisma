@@ -14,10 +14,10 @@ namespace OrderService.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private ApplicationService _applicationService;
+        private IApplicationService _applicationService;
         private IMapper _mapper;
 
-        public OrdersController(ApplicationService applicationService, IMapper mapper)
+        public OrdersController(IApplicationService applicationService, IMapper mapper)
         {
             _applicationService = applicationService;
             _mapper = mapper;

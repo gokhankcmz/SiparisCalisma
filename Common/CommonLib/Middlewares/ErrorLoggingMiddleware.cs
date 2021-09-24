@@ -25,7 +25,7 @@ namespace CommonLib.Middlewares
                 await _next(httpContext);
             }
             catch (ErrorDetails e)
-            {
+            { 
                 _logger.Information(e, "A known error has occurred.");
             }
             catch (Exception e)

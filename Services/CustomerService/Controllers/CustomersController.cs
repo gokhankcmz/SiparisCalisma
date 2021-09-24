@@ -40,7 +40,6 @@ namespace CustomerService.Controllers
         [HttpGet("{customerId:guid}", Name = "CustomerById")]
         public async Task<IActionResult> GetCustomer(Guid customerId)
         {
-            _logger.Information("this is a test log.");
             var customerEntity = await _applicationService.GetAsync(customerId);
             return Ok(customerEntity);
             //return Ok(_mapper.Map<CustomerResponseDto>(customerEntity));

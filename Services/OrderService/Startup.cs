@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using CommonLib.Helpers.Jwt;
 using CommonLib.Middlewares;
@@ -39,10 +40,7 @@ namespace OrderService
                     x.ImplicitlyValidateChildProperties = true;
                 });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "OrderService", Version = "v1"});
-            });
+            services.AddSwagger();
             services.AddMongo(Configuration);
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddSingleton<IRepository<Order>, Repository<Order>>();

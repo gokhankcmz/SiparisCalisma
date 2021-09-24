@@ -17,18 +17,21 @@ namespace CommonLib.Helpers.Jwt
         public static void ConfigureJwt(this IServiceCollection services, IConfiguration
             configuration)
         {
+            var provider = "Bearer";
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings.GetSection("secret").Value;
             services.AddAuthentication(opt => {
                     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer(options =>
+                .AddJwtBearer(provider, options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
                         ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
                         ValidAudience = jwtSettings.GetSection("validAudience").Value,
                         IssuerSigningKey = new

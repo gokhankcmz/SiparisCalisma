@@ -13,7 +13,20 @@
       "UpstreamHttpMethod": ["GET", "POST"],
       "SwaggerKey": "customers"
     },
-    
+    {
+      "DownstreamPathTemplate": "/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/token",
+      "UpstreamHttpMethod": ["POST"],
+      "SwaggerKey": "customers"
+    },
+
     {
       "DownstreamPathTemplate": "/customers/{customerId}/address",
       "DownstreamScheme": "http",
@@ -23,6 +36,10 @@
           "Port": 80
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/customers/{customerId}/address",
       "UpstreamHttpMethod": ["GET"],
       "SwaggerKey": "customers"
@@ -37,6 +54,10 @@
           "Port": 80
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/customers/{customerId}",
       "UpstreamHttpMethod": ["GET","DELETE","PUT"],
       "SwaggerKey": "customers"
@@ -52,13 +73,17 @@
           "Port": 80
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/customers/{customerId}/validation",
       "UpstreamHttpMethod": ["PUT"],
       "SwaggerKey": "customers"
     },
 
     {
-      "DownstreamPathTemplate": "/orders/",
+      "DownstreamPathTemplate": "/orders",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -66,8 +91,12 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/orders/",
+      "UpstreamPathTemplate": "/orders",
       "UpstreamHttpMethod": ["POST", "GET"],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "SwaggerKey": "orders"
     },
 
@@ -80,6 +109,10 @@
           "Port": 80
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/orders/{orderId}/product",
       "UpstreamHttpMethod": ["GET"],
       "SwaggerKey": "orders"
@@ -94,14 +127,18 @@
           "Port": 80
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/orders/{orderId}/",
       "UpstreamHttpMethod": ["GET", "PUT", "DELETE"],
       "SwaggerKey": "orders"
     }
   ],
-  
-  
-  
+
+
+
   "SwaggerEndPoints": [
     {
       "Key": "orders",

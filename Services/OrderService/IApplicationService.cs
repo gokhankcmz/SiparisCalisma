@@ -15,7 +15,6 @@ namespace OrderService
         DeleteResult Delete(Order document);
         Task<List<Order>> GetByConditionAsync(Expression<Func<Order, bool>> expression);
         Task<List<Order>> GetAllAsync();
-
-
+        void CheckIfSelfOrder(Order order, Guid customerId);
     }
 }

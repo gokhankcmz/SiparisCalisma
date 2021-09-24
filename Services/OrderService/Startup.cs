@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using CommonLib.Helpers.Jwt;
 using CommonLib.Middlewares;
 using Entities.Models;
@@ -11,7 +10,6 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OrderService.Filters;
@@ -52,14 +50,14 @@ namespace OrderService
             services.AddScoped<ValidateCustomerExistAttribute>();
             services.AddSingleton<IApplicationService, ApplicationService>();
             services.ConfigureJwt(Configuration);
-            services.AddSingleton<AuthenticationManager<Order>>();
 
             services.AddHealthChecks()
                 .AddElasticsearch(Configuration.GetSection("ElasticConfiguration:Uri").Value, name: "Elastic Search",
                     tags: new[] {"logging", "service"}, timeout: TimeSpan.FromSeconds(5))
                 .AddMongoDb(Configuration.GetSection("MongoSettings").Get<MongoSettings>().ConnectionString,
                     name: "MongoDb",
-                    tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3));
+                    tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3))
+                .AddCheck("Customer Service", new CustomerServiceHealthCheck());
 
         }
 
@@ -82,7 +80,7 @@ namespace OrderService
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseCustomerValidation();
+            app.UseCustomerTokenValidation();
             
             app.UseSerilogRequestLogging();
             app.UseAuthorization();

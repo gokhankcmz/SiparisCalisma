@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Entities.Models;
-using Entities.RequestModels;
 using MongoDB.Driver;
 
 namespace OrderService
@@ -17,7 +16,6 @@ namespace OrderService
         Task<List<Order>> GetByConditionAsync(Expression<Func<Order, bool>> expression);
         Task<List<Order>> GetAllAsync();
 
-        Task<string> GetToken(AuthDto authDto);
 
     }
 }

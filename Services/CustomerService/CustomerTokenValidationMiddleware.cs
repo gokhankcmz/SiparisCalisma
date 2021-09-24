@@ -4,15 +4,14 @@ using CommonLib.Helpers.Jwt;
 using CommonLib.Models.ErrorModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
 
 namespace CustomerService
 {
-    public class CustomerValidationMiddleware
+    public class CustomerTokenValidationMiddleware
     {
         private RequestDelegate _next;
 
-        public CustomerValidationMiddleware(RequestDelegate next)
+        public CustomerTokenValidationMiddleware(RequestDelegate next)
         {
             _next = next;
         }
@@ -34,8 +33,8 @@ namespace CustomerService
 
     public static class CustomerIdFromTokenMiddlewareExtension
     {
-        public static IApplicationBuilder UseCustomerValidation(this IApplicationBuilder applicationBuilder) =>
-            applicationBuilder.UseMiddleware<CustomerValidationMiddleware>();
+        public static IApplicationBuilder UseCustomerTokenValidation(this IApplicationBuilder applicationBuilder) =>
+            applicationBuilder.UseMiddleware<CustomerTokenValidationMiddleware>();
     }
 
 }

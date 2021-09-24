@@ -88,7 +88,7 @@ namespace CustomerService
             app.UseRouting();
 
 
-            app.UseCustomerValidation();
+            app.UseCustomerTokenValidation();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

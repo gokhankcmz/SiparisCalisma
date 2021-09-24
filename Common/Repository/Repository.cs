@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using CommonLib.Models;
-using Entities.Models;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
@@ -44,14 +43,47 @@ namespace Repository
             return _collection.DeleteOne(x => x.Id.Equals(document.Id));
         }
 
-        public async Task<List<T>> GetByCondition(Expression<Func<T, bool>> expression)
+        public async Task<List<T>> GetByConditionAsync(Expression<Func<T, bool>> expression)
         {
             return await _collection.AsQueryable().Where(expression).ToListAsync();
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<List<T>> GetAllAsync()
         {
             return await _collection.AsQueryable().ToListAsync();
+        }
+
+        
+        
+        
+        public List<T> GetAll()
+        {
+            return _collection.AsQueryable().ToList();
+        }
+
+        public List<T> GetByCondition(Expression<Func<T, bool>> expression)
+        {
+            
+            return _collection.AsQueryable().Where(expression).ToList();
+        }
+        
+        public  T Create(T document)
+        {
+            document.CreatedAt = DateTime.Now;
+            document.UpdatedAt = DateTime.Now;
+            _collection.InsertOne(document);
+            return document;
+        }
+
+        public T GetById(Guid id)
+        {
+            return _collection.AsQueryable().Where(x => x.Id.Equals(id)).First();
+        }
+
+        public T Replace(T document)
+        {
+              _collection.ReplaceOne(x => x.Id.Equals(document.Id), document);
+            return document;
         }
     }
 }

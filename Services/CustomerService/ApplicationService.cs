@@ -45,17 +45,17 @@ namespace CustomerService
 
         public async Task<List<Customer>> GetByConditionAsync(Expression<Func<Customer, bool>> expression)
         {
-            return await _repository.GetByCondition(expression);
+            return await _repository.GetByConditionAsync(expression);
         }
 
         public async Task<List<Customer>> GetAllAsync()
         {
-            return await _repository.GetAll();
+            return await _repository.GetAllAsync();
         }
 
         public async Task<string> CreateToken(AuthDto authDto)
         {
-            var customer = (await _repository.GetByCondition(x => x.Id.Equals(authDto.Id) && x.Email.Equals(authDto.email))).FirstOrDefault();
+            var customer = (await _repository.GetByConditionAsync(x => x.Id.Equals(authDto.Id) && x.Email.Equals(authDto.email))).FirstOrDefault();
             if (customer == null)
             {
                 throw new Conflict();

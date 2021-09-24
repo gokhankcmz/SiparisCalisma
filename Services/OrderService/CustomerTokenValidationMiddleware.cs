@@ -1,20 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CommonLib.Helpers.Jwt;
-using CommonLib.Middlewares;
-using CommonLib.Models.ErrorModels;
-using Entities.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 
 namespace OrderService
 {
-    public class CustomerValidationMiddleware
+    public class CustomerTokenValidationMiddleware
     {
         private RequestDelegate _next;
 
-        public CustomerValidationMiddleware(RequestDelegate next)
+        public CustomerTokenValidationMiddleware(RequestDelegate next)
         {
             _next = next;
         }
@@ -37,8 +33,8 @@ namespace OrderService
 
     public static class CustomerIdFromTokenMiddlewareExtension
     {
-        public static IApplicationBuilder UseCustomerValidation(this IApplicationBuilder applicationBuilder) =>
-            applicationBuilder.UseMiddleware<CustomerValidationMiddleware>();
+        public static IApplicationBuilder UseCustomerTokenValidation(this IApplicationBuilder applicationBuilder) =>
+            applicationBuilder.UseMiddleware<CustomerTokenValidationMiddleware>();
     }
 
 }

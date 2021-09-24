@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using CommonLib.Models.ErrorModels;
 using Entities.Models;
 using Entities.RequestModels;
 using Entities.ResponseModels;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Filters;
-using Repository;
 
 namespace OrderService.Controllers
 {

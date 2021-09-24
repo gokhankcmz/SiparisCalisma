@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using CommonLib.Helpers.Jwt;
 using CommonLib.Models.ErrorModels;
 using Entities.Models;
-using Entities.RequestModels;
-using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Repository;
 
@@ -16,12 +12,10 @@ namespace OrderService
     public class ApplicationService : IApplicationService 
     {
         private IRepository<Order> _repository;
-        private AuthenticationManager<Order> _authManager;
 
-        public ApplicationService(IRepository<Order> repository, AuthenticationManager<Order> authManager)
+        public ApplicationService(IRepository<Order> repository)
         {
             _repository = repository;
-            _authManager = authManager;
         }
 
         public async Task<Order> GetAsync(Guid guid)
@@ -46,24 +40,14 @@ namespace OrderService
 
         public async Task<List<Order>> GetByConditionAsync(Expression<Func<Order, bool>> expression)
         {
-            return await _repository.GetByCondition(expression);
+            return await _repository.GetByConditionAsync(expression);
         }
 
         public async Task<List<Order>> GetAllAsync()
         {
-            return await _repository.GetAll();
+            return await _repository.GetAllAsync();
         }
 
-        public async Task<string> GetToken(AuthDto authDto)
-        {
-            var order = (await _repository.GetByCondition(x => x.Id.Equals(authDto.Id))).FirstOrDefault();
-            if (order == null)
-            {
-                throw new Conflict();
-            }
-            var token = _authManager.Authenticate(order);
-            return token;
-        }
 
         public void CheckIfSelfOrder(Order order, Guid customerId)
         {

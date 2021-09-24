@@ -4,7 +4,6 @@ using CommonLib.Models.ErrorModels;
 using Serilog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 
 namespace CommonLib.Middlewares
 {

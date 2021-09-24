@@ -146,3 +146,6 @@ C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\obj\Debug\net5.0\Or
 C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\obj\Debug\net5.0\ref\OrderService.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\obj\Debug\net5.0\OrderService.pdb
 C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\obj\Debug\net5.0\OrderService.genruntimeconfig.cache
+C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\bin\Debug\net5.0\HealthChecks.Network.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\bin\Debug\net5.0\Renci.SshNet.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Services\OrderService\bin\Debug\net5.0\SshNet.Security.Cryptography.dll

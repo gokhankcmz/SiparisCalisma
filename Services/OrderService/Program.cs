@@ -27,7 +27,7 @@ namespace OrderService
                     configuration.Enrich.FromLogContext()
                         .Enrich.WithMachineName()
                         .WriteTo.Console()
-                        .WriteTo.Kafka(bootstrapServers:"kafka:9092", topic:"orderservice-api-logs")
+                        .WriteTo.Kafka(context.Configuration["Kafka:bootstrapServers"], topic:context.Configuration["Kafka:bootstrapServers"])
                         /*.WriteTo.Elasticsearch(
                             new ElasticsearchSinkOptions(new Uri(context.Configuration["ElasticConfiguration:Uri"]))
                             {

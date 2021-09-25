@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "+T9mwQ8/fGvS+O6czQgyTjjtE54DTD5+ikN0zVr7pVF2mIbhh6toP5rDPsRiOS3OEOYG+KdLszSZbnukUlsaeg==",
+  "dgSpecHash": "HhrtfBs4VC/L2YEMnFLTskpid2Bx9GRARWY2rMHQLetekCZe2aThPpZq9iovC7xJIZMr/XXr0b0QueWUcSBagg==",
   "success": true,
   "projectFilePath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Services\\CustomerService\\CustomerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gk-89\\.nuget\\packages\\aspnetcore.healthchecks.elasticsearch\\5.0.1\\aspnetcore.healthchecks.elasticsearch.5.0.1.nupkg.sha512",
+    "C:\\Users\\gk-89\\.nuget\\packages\\aspnetcore.healthchecks.kafka\\5.0.1\\aspnetcore.healthchecks.kafka.5.0.1.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\aspnetcore.healthchecks.mongodb\\5.0.1\\aspnetcore.healthchecks.mongodb.5.0.1.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\aspnetcore.healthchecks.ui\\5.0.1\\aspnetcore.healthchecks.ui.5.0.1.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\5.0.1\\aspnetcore.healthchecks.ui.client.5.0.1.nupkg.sha512",

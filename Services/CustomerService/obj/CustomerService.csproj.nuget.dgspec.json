@@ -295,6 +295,10 @@
               "target": "Package",
               "version": "[5.0.1, )"
             },
+            "AspNetCore.HealthChecks.Kafka": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
             "AspNetCore.HealthChecks.MongoDb": {
               "target": "Package",
               "version": "[5.0.1, )"

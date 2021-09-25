@@ -15,6 +15,19 @@
           "lib/net5.0/HealthChecks.Elasticsearch.dll": {}
         }
       },
+      "AspNetCore.HealthChecks.Kafka/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Confluent.Kafka": "1.5.2",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "5.0.1"
+        },
+        "compile": {
+          "lib/net5.0/HealthChecks.Kafka.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HealthChecks.Kafka.dll": {}
+        }
+      },
       "AspNetCore.HealthChecks.MongoDb/5.0.1": {
         "type": "package",
         "dependencies": {
@@ -3410,6 +3423,19 @@
         "aspnetcore.healthchecks.elasticsearch.nuspec",
         "lib/net5.0/HealthChecks.Elasticsearch.dll",
         "lib/netstandard2.0/HealthChecks.Elasticsearch.dll"
+      ]
+    },
+    "AspNetCore.HealthChecks.Kafka/5.0.1": {
+      "sha512": "acn/rHUaHas8SY7HAQOdKJrWBwiyzzgM5j+L6ecpD0shkOZlG01zmWpZGKVPh0Wgx/ZIzPZ9Gkh1dfLhvEMzMQ==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.kafka/5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.kafka.5.0.1.nupkg.sha512",
+        "aspnetcore.healthchecks.kafka.nuspec",
+        "lib/net5.0/HealthChecks.Kafka.dll",
+        "lib/netstandard2.0/HealthChecks.Kafka.dll"
       ]
     },
     "AspNetCore.HealthChecks.MongoDb/5.0.1": {
@@ -9874,6 +9900,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "AspNetCore.HealthChecks.Elasticsearch >= 5.0.1",
+      "AspNetCore.HealthChecks.Kafka >= 5.0.1",
       "AspNetCore.HealthChecks.MongoDb >= 5.0.1",
       "AspNetCore.HealthChecks.Network >= 5.0.4",
       "AspNetCore.HealthChecks.UI.Client >= 5.0.1",
@@ -9933,6 +9960,10 @@
         "targetAlias": "net5.0",
         "dependencies": {
           "AspNetCore.HealthChecks.Elasticsearch": {
+            "target": "Package",
+            "version": "[5.0.1, )"
+          },
+          "AspNetCore.HealthChecks.Kafka": {
             "target": "Package",
             "version": "[5.0.1, )"
           },

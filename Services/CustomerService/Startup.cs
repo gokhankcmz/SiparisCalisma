@@ -48,7 +48,11 @@ namespace CustomerService
                     tags: new[] {"logging", "service"}, timeout: TimeSpan.FromSeconds(5))
                 .AddMongoDb(Configuration.GetSection("MongoSettings").Get<MongoSettings>().ConnectionString,
                     name: "MongoDb",
-                    tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3));
+                    tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3))
+                .AddKafka(config =>
+                {
+                    config.BootstrapServers = Configuration["Kafka:bootstrapServers"];
+                }, name: "Kafka", tags: new[] {"logging", "kafka"});
             
             services.AddSwagger();
             services.AddMongo(Configuration, mongoSettings);

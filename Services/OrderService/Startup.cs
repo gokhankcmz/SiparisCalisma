@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using CommonLib.Helpers.Jwt;
 using CommonLib.Middlewares;
+using Confluent.Kafka;
 using Entities.Models;
 using FluentValidation.AspNetCore;
 using HealthChecks.UI.Client;
@@ -55,7 +56,12 @@ namespace OrderService
                 .AddMongoDb(Configuration.GetSection("MongoSettings").Get<MongoSettings>().ConnectionString,
                     name: "MongoDb",
                     tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3))
-                .AddCheck("Customer Service", new CustomerServiceHealthCheck());
+                .AddCheck("Customer Service", new CustomerServiceHealthCheck())
+                .AddKafka(config =>
+                {
+                    config.BootstrapServers = Configuration["Kafka:bootstrapServers"];
+                }, name: "Kafka", tags: new[] {"logging", "kafka"});
+
 
         }
 

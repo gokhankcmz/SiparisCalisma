@@ -34,6 +34,7 @@ namespace CustomerService
         {
             
             var mongoSettings = Configuration.GetSection("MongoSettings").Get<MongoSettings>();
+            
             services.AddControllers()
                 .AddFluentValidation(x =>
                 {

@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CommonLib.Helpers.Jwt;
+using CommonLib.Models.ErrorModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -18,8 +20,6 @@ namespace OrderService
         public async Task Invoke(HttpContext httpContext)
         {
             var request = httpContext.Request;
-            var uri = request.GetDisplayUrl();
-
             if (request.RouteValues.ContainsKey("orderId"))
             {
                 var idFromToken = request.Headers.GetClaimOrThrow("nameid");
@@ -27,8 +27,7 @@ namespace OrderService
             }
             await _next.Invoke(httpContext);
         }
-
-
+        
     }
 
     public static class CustomerIdFromTokenMiddlewareExtension

@@ -6,6 +6,7 @@ services:
     container_name: customerservice
     depends_on:
       - elasticsearch
+      - kafka
     build:
       context: .
       dockerfile: Services/CustomerService/Dockerfile
@@ -14,11 +15,11 @@ services:
     image: ${DOCKER_REGISTRY-}orderservice
     depends_on:
       - elasticsearch
+      - kafka
     container_name: orderservice
     build:
       context: .
       dockerfile: Services/OrderService/Dockerfile
-
 
   gateway:
     image: ${DOCKER_REGISTRY-}gateway
@@ -31,17 +32,38 @@ services:
       dockerfile: Services/Gateway/Dockerfile
 
 
+
+#KAFKA
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    container_name: zookeeper
+  
+  kafka:
+    image: confluentinc/cp-kafka
+    container_name: kafka 
+    depends_on:
+      - zookeeper
+
+
+
+#ELK
   elasticsearch:
     image: elasticsearch:7.14.1
     container_name: elasticsearch
-      
+  
+  logstash:
+    image: logstash:7.14.1
+    container_name: logstash
+
   kibana:
     image: kibana:7.14.1
     container_name: kibana
-
-
-
-
+    depends_on:
+      - elasticsearch
+        
+     
+     
+        
 volumes:
   elasticsearch-data:
     driver: local

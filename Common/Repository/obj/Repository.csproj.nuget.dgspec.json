@@ -80,6 +80,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Serilog.Sinks.Confluent.Kafka": {
+              "target": "Package",
+              "version": "[1.9.2, )"
+            },
             "Serilog.Sinks.Elasticsearch": {
               "target": "Package",
               "version": "[8.4.1, )"

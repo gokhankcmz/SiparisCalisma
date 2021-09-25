@@ -14,6 +14,18 @@
           "Entities.dll": {}
         }
       },
+      "Confluent.Kafka/1.6.3": {
+        "dependencies": {
+          "System.Memory": "4.5.0",
+          "librdkafka.redist": "1.6.1"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Confluent.Kafka.dll": {
+            "assemblyVersion": "1.6.3.0",
+            "fileVersion": "1.6.3.0"
+          }
+        }
+      },
       "Elasticsearch.Net/7.8.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.6.0",
@@ -32,6 +44,100 @@
           "lib/net5.0/FluentValidation.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "10.3.3.0"
+          }
+        }
+      },
+      "librdkafka.redist/1.6.1": {
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/librdkafka.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/alpine-librdkafka.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/centos6-librdkafka.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/centos7-librdkafka.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/librdkafka.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/librdkafka.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/librdkafka.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/librdkafkacpp.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/libzstd.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/msvcp120.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "12.0.21005.1"
+          },
+          "runtimes/win-x64/native/msvcr120.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "12.0.21005.1"
+          },
+          "runtimes/win-x64/native/zlib.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.2.8.0"
+          },
+          "runtimes/win-x86/native/librdkafka.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/librdkafkacpp.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/libzstd.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/msvcp120.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "12.0.21005.1"
+          },
+          "runtimes/win-x86/native/msvcr120.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "12.0.21005.1"
+          },
+          "runtimes/win-x86/native/zlib.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.2.8.0"
           }
         }
       },
@@ -865,6 +971,19 @@
           }
         }
       },
+      "Serilog.Sinks.Confluent.Kafka/1.9.2": {
+        "dependencies": {
+          "Confluent.Kafka": "1.6.3",
+          "Serilog": "2.10.0",
+          "Serilog.Sinks.PeriodicBatching": "2.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Sinks.Kafka.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Serilog.Sinks.Console/3.1.1": {
         "dependencies": {
           "Serilog": "2.10.0",
@@ -898,7 +1017,7 @@
           "Serilog.Formatting.Compact": "1.1.0",
           "Serilog.Formatting.Elasticsearch": "8.4.1",
           "Serilog.Sinks.File": "4.1.0",
-          "Serilog.Sinks.PeriodicBatching": "2.1.1",
+          "Serilog.Sinks.PeriodicBatching": "2.3.0",
           "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "runtime": {
@@ -922,16 +1041,16 @@
           }
         }
       },
-      "Serilog.Sinks.PeriodicBatching/2.1.1": {
+      "Serilog.Sinks.PeriodicBatching/2.3.0": {
         "dependencies": {
           "Serilog": "2.10.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Threading.Timer": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard1.2/Serilog.Sinks.PeriodicBatching.dll": {
+          "lib/netstandard2.0/Serilog.Sinks.PeriodicBatching.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.1.1.0"
+            "fileVersion": "2.3.0.0"
           }
         }
       },
@@ -1170,6 +1289,7 @@
           "System.Threading": "4.3.0"
         }
       },
+      "System.Memory/4.5.0": {},
       "System.Net.Http/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -1663,6 +1783,7 @@
           "Newtonsoft.Json": "13.0.1",
           "Serilog.AspNetCore": "4.1.0",
           "Serilog.Enrichers.Environment": "2.2.0",
+          "Serilog.Sinks.Confluent.Kafka": "1.9.2",
           "Serilog.Sinks.Elasticsearch": "8.4.1"
         },
         "runtime": {
@@ -1677,6 +1798,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Confluent.Kafka/1.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cYlovoBEJRPQ4OuX9Rhp1vgsX+1aLPdcGBl4+v/CFgm3Qj7inr3fPqRrVM3uFy0+zUp67et17xB87Ir553Y51A==",
+      "path": "confluent.kafka/1.6.3",
+      "hashPath": "confluent.kafka.1.6.3.nupkg.sha512"
+    },
     "Elasticsearch.Net/7.8.1": {
       "type": "package",
       "serviceable": true,
@@ -1690,6 +1818,13 @@
       "sha512": "sha512-sgRC+7q4mnmDHE9ehk2cvb+FDTy/gtw5iBoKFY3FVp1ZwFsLS0kIcdSpNlCO3XyyNIzZI2ca8I/YiFG9pM6x0Q==",
       "path": "fluentvalidation/10.3.3",
       "hashPath": "fluentvalidation.10.3.3.nupkg.sha512"
+    },
+    "librdkafka.redist/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-czrcm+sa2vvjPBdcGPct+eEKAnJz7nHcy7Foo6jpcjU+Ttnq3CGRqcOajqjge5PQpRhqBgcyIgS8XfJy3862xA==",
+      "path": "librdkafka.redist/1.6.1",
+      "hashPath": "librdkafka.redist.1.6.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",
@@ -2454,6 +2589,13 @@
       "path": "serilog.settings.configuration/3.1.0",
       "hashPath": "serilog.settings.configuration.3.1.0.nupkg.sha512"
     },
+    "Serilog.Sinks.Confluent.Kafka/1.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V0YzhCThkMiT9eo+vN6pp5MtX09cFYtFQFX3efRafzxWc9L8hHrIWi4cYAPQg01hq3v9nP5AZ2jso3wY91sVqg==",
+      "path": "serilog.sinks.confluent.kafka/1.9.2",
+      "hashPath": "serilog.sinks.confluent.kafka.1.9.2.nupkg.sha512"
+    },
     "Serilog.Sinks.Console/3.1.1": {
       "type": "package",
       "serviceable": true,
@@ -2482,12 +2624,12 @@
       "path": "serilog.sinks.file/4.1.0",
       "hashPath": "serilog.sinks.file.4.1.0.nupkg.sha512"
     },
-    "Serilog.Sinks.PeriodicBatching/2.1.1": {
+    "Serilog.Sinks.PeriodicBatching/2.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-L1iZtcEzQdEIYCPvhYJYB2RofPg+i1NhHJfS+DpXLyLSMS6OXebqaI1fxWhmJRIjD9D9BuXi23FkZTQDiP7cHw==",
-      "path": "serilog.sinks.periodicbatching/2.1.1",
-      "hashPath": "serilog.sinks.periodicbatching.2.1.1.nupkg.sha512"
+      "sha512": "sha512-UYKSjTMTlUY9T3OgzMmLDLD+z0qPfgvq/RvG0rKfyz+O+Zrjw3X/Xpv14J4WMcGVsOjUaR+k8n2MdmqVpJtI6A==",
+      "path": "serilog.sinks.periodicbatching/2.3.0",
+      "hashPath": "serilog.sinks.periodicbatching.2.3.0.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -2663,6 +2805,13 @@
       "sha512": "sha512-PGKkrd2khG4CnlyJwxwwaWWiSiWFNBGlgXvJpeO0xCXrZ89ODrQ6tjEWS/kOqZ8GwEOUATtKtzp1eRgmYNfclg==",
       "path": "system.linq.expressions/4.3.0",
       "hashPath": "system.linq.expressions.4.3.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m0psCSpUxTGfvwyO0i03ajXVhgBqyXlibXz0Mo1dtKGjaHrXFLnuQ8rNBTmWRqbfRjr4eC6Wah4X5FfuFDu5og==",
+      "path": "system.memory/4.5.0",
+      "hashPath": "system.memory.4.5.0.nupkg.sha512"
     },
     "System.Net.Http/4.3.0": {
       "type": "package",

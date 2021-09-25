@@ -2,7 +2,14 @@ using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
+using Serilog.Formatting;
+using Serilog.Formatting.Compact;
+using Serilog.Formatting.Display;
+using Serilog.Formatting.Elasticsearch;
+using Serilog.Formatting.Json;
 using Serilog.Sinks.Elasticsearch;
+using Serilog.Sinks.Kafka;
 
 namespace OrderService
 {
@@ -20,7 +27,8 @@ namespace OrderService
                     configuration.Enrich.FromLogContext()
                         .Enrich.WithMachineName()
                         .WriteTo.Console()
-                        .WriteTo.Elasticsearch(
+                        .WriteTo.Kafka(bootstrapServers:"kafka:9092", topic:"orderservice-api-logs")
+                        /*.WriteTo.Elasticsearch(
                             new ElasticsearchSinkOptions(new Uri(context.Configuration["ElasticConfiguration:Uri"]))
                             {
                                 IndexFormat =
@@ -28,10 +36,11 @@ namespace OrderService
                                 AutoRegisterTemplate = true,
                                 NumberOfShards = 2,
                                 NumberOfReplicas = 1
-                            })
+                            })*/
                         .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
                         .ReadFrom.Configuration(context.Configuration);
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+
     }
 }

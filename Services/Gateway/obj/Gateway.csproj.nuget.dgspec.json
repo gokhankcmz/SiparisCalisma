@@ -79,6 +79,10 @@
             "Ocelot": {
               "target": "Package",
               "version": "[17.0.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
             }
           },
           "imports": [

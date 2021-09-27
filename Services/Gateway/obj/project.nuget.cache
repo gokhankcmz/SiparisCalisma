@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ecg8p1O1e/wQ3QbILb/jMoxdp12/e4EJ2+nCaBJdLlVnISnHjl65M3KPrbnwF/9jaL16NnuwP819ab+SjlSdhw==",
+  "dgSpecHash": "WNow3XjChwVmA7/iOhQKlvOYTpcuF7tewAPm9HIfeb71xVfv1MgoyCWDyLchvr97WoHeaoB9PD8YhjhFU/Drpw==",
   "success": true,
   "projectFilePath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Services\\Gateway\\Gateway.csproj",
   "expectedPackageFiles": [
@@ -87,6 +87,7 @@
     "C:\\Users\\gk-89\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\gk-89\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\gk-89\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",

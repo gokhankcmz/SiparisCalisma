@@ -57,13 +57,14 @@ namespace Gateway
             {
                 app.UseDeveloperExceptionPage();
             }
-            
             app.UseSwaggerForOcelotUI(opt =>
             {
                 opt.PathToSwaggerGenerator = "/swagger/docs";
             });
+            app.UseCustomErrorHandler();
+            app.UseResponseManipulation();
             app.UseRouting();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHealthChecksUI();

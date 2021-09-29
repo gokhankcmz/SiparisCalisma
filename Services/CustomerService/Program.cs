@@ -21,7 +21,7 @@ namespace CustomerService
                     configuration.Enrich.FromLogContext()
                         .Enrich.WithMachineName()
                         .WriteTo.Console()
-                        .WriteTo.Kafka(bootstrapServers:"kafka:9092", topic:"customerservice-api-logs")
+                        .WriteTo.Kafka(context.Configuration["Kafka:bootstrapServers"], topic:context.Configuration["Kafka:topic"])
                         // .WriteTo.Elasticsearch(
                         //     new ElasticsearchSinkOptions(new Uri(context.Configuration["ElasticConfiguration:Uri"]))
                         //     {

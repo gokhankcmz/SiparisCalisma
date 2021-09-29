@@ -26,11 +26,9 @@ namespace CommonLib.Middlewares
             }
             catch (ErrorDetails e)
             { 
-                _logger.Information(e, "A known error has occurred.");
             }
             catch (Exception e)
             {
-                _logger.Error(e, "An unknown error has occured.");
             }
         }
 

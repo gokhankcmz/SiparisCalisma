@@ -74,7 +74,6 @@ namespace OrderService
             }    
             
             
-            app.UseErrorLogger();
             app.UseCustomErrorHandler();
             app.UseResponseManipulation();
             

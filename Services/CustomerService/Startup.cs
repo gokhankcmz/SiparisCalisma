@@ -76,7 +76,6 @@ namespace CustomerService
 
             
             
-            app.UseErrorLogger();
             app.UseCustomErrorHandler();
             app.UseResponseManipulation();
             

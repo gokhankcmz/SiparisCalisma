@@ -3,15 +3,18 @@ using System.Threading.Tasks;
 using Gateway.ErrorModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Serilog;
 
 namespace Gateway
 {
     public class ErrorHandlingMiddleware
     {
+        private readonly ILogger _logger;
         private RequestDelegate _next;
 
-        public ErrorHandlingMiddleware(RequestDelegate next)
+        public ErrorHandlingMiddleware(ILogger logger, RequestDelegate next)
         {
+            _logger = logger;
             _next = next;
         }
 
@@ -23,10 +26,17 @@ namespace Gateway
             }
             catch (ErrorDetails ex)
             {
+                // if (typeof(ErrorDetails) == ex.GetType())
+                // {
+                //     
+                // }
+                _logger.Information(ex.GetBaseException(),"A known error has occurred.");
+                _logger.Information(ex, "A known error has occurred.");
                 await HandleAsync(httpContext, ex);
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, "An unknown error has occured.");
                 await HandleAsync(httpContext, ex);
             }
         }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Serilog;
 
 namespace Gateway
 {
@@ -62,6 +63,7 @@ namespace Gateway
                 opt.PathToSwaggerGenerator = "/swagger/docs";
             });
             app.UseCustomErrorHandler();
+            app.UseSerilogRequestLogging();
             app.UseResponseManipulation();
             app.UseRouting();
             

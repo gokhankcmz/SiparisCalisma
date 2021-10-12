@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using CommonLib.Helpers.Jwt;
-using CommonLib.Middlewares;
 using CustomerService.Filters;
+using CustomerService.Middlewares;
 using CustomerService.Utility;
 using Entities.Models;
 using FluentValidation.AspNetCore;
@@ -14,7 +13,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Repository;
 using Serilog;
 
@@ -33,6 +31,12 @@ namespace CustomerService
         public void ConfigureServices(IServiceCollection services)
         {
             
+            //services.AddHealthChecks(
+            //    Services.Mongo,
+            //    Services.Kafka,
+            //    Service.Redis
+            //)
+            
             var mongoSettings = Configuration.GetSection("MongoSettings").Get<MongoSettings>();
             
             services.AddControllers()
@@ -42,10 +46,9 @@ namespace CustomerService
                     x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                     x.ImplicitlyValidateChildProperties = true;
                 });
-
-            services.AddHealthChecks()
-                .AddElasticsearch(Configuration.GetSection("ElasticConfiguration:Uri").Value, name: "Elastic Search",
-                    tags: new[] {"logging", "service"}, timeout: TimeSpan.FromSeconds(5))
+                services.AddHealthChecks()
+                    .AddElasticsearch(Configuration.GetSection("ElasticConfiguration:Uri").Value, name: "Elastic Search",
+                     tags: new[] {"logging", "service"}, timeout: TimeSpan.FromSeconds(5))
                 .AddMongoDb(Configuration.GetSection("MongoSettings").Get<MongoSettings>().ConnectionString,
                     name: "MongoDb",
                     tags: new[] {"database", "mongo", "service"}, timeout: TimeSpan.FromSeconds(3))
@@ -53,7 +56,7 @@ namespace CustomerService
                 {
                     config.BootstrapServers = Configuration["Kafka:bootstrapServers"];
                 }, name: "Kafka", tags: new[] {"logging", "kafka"});
-            
+                
             services.AddSwagger();
             services.AddMongo(Configuration, mongoSettings);
             services.AddAutoMapper(typeof(MappingProfile));
@@ -64,7 +67,9 @@ namespace CustomerService
             services.ConfigureJwt(Configuration);
             services.AddSingleton<AuthenticationManager<Customer>>();
             services.AddAuthentication();
+            
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -73,11 +78,15 @@ namespace CustomerService
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
+            // app.Use((context, next) =>
+            // {
+            //     context.Request.EnableBuffering();
+            //     return next();
+            // });
             
             
             app.UseCustomErrorHandler();
-            app.UseResponseManipulation();
             
             
             

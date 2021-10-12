@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using CommonLib.Helpers.Jwt;
-using CommonLib.Middlewares;
-using Confluent.Kafka;
 using Entities.Models;
 using FluentValidation.AspNetCore;
 using HealthChecks.UI.Client;
@@ -13,8 +10,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using OrderService.Filters;
+using OrderService.Middlewares;
 using OrderService.Utility;
 using Repository;
 using Serilog;
@@ -60,7 +57,8 @@ namespace OrderService
                 .AddKafka(config =>
                 {
                     config.BootstrapServers = Configuration["Kafka:bootstrapServers"];
-                }, name: "Kafka", tags: new[] {"logging", "kafka"});
+                }, name: "Kafka", tags: new[] {"logging", "kafka"})
+                .AddUrlGroup(new Uri("http://customerservice:80/health"), "CustomerService");
 
 
         }
@@ -75,7 +73,6 @@ namespace OrderService
             
             
             app.UseCustomErrorHandler();
-            app.UseResponseManipulation();
             
             
             app.UseSwagger();

@@ -14,9 +14,11 @@ namespace CommonLib.Helpers.Jwt
 {
     public static class JwtHelper
     {
+        public static IConfiguration Configuration;
         public static void ConfigureJwt(this IServiceCollection services, IConfiguration
             configuration)
         {
+            Configuration = configuration;
             var provider = "Bearer";
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings.GetSection("secret").Value;
@@ -26,17 +28,7 @@ namespace CommonLib.Helpers.Jwt
                 })
                 .AddJwtBearer(provider, options =>
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
-                        ValidAudience = jwtSettings.GetSection("validAudience").Value,
-                        IssuerSigningKey = new
-                            SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
-                    };
+                    options.TokenValidationParameters = ValidationParameters();
                 });
         }
         
@@ -47,9 +39,16 @@ namespace CommonLib.Helpers.Jwt
             exception ??= new UnAuthorized();
             try
             {
-                var tokenDecoded = new JwtSecurityToken(token);
-                if (tokenDecoded.ValidTo < DateTime.UtcNow) throw exception;
-                Claim claim = tokenDecoded.Claims.FirstOrDefault(x => x.Type.Equals(claimType));
+                var tokenHandler = new JwtSecurityTokenHandler();
+                tokenHandler.ValidateToken(token, ValidationParameters(), out var validatedToken);
+                var validJwtToken = (JwtSecurityToken) validatedToken;
+                if (validatedToken.ValidTo < DateTime.UtcNow)
+                {
+                    exception = new UnAuthorized("Token outdated.");
+                    throw exception;
+                }
+
+                var claim = validJwtToken.Claims.FirstOrDefault(x => x.Type.Equals(claimType));
                 return claim.Value;
 
             }
@@ -59,5 +58,19 @@ namespace CommonLib.Helpers.Jwt
             }
 
         }
+        
+        public static TokenValidationParameters ValidationParameters() =>
+            new() 
+            {
+                ValidateLifetime = false, 
+                ValidateIssuerSigningKey = true,
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidIssuer = Configuration.GetSection("validIssuer").Value,
+                ValidAudience = Configuration.GetSection("validAudience").Value,
+                IssuerSigningKey = new
+                SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JwtSettings:secret").Value))
+            
+            };
     }
 }

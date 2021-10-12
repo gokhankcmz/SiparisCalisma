@@ -22,14 +22,14 @@ services:
       dockerfile: Services/OrderService/Dockerfile
 
   gateway:
-    image: ${DOCKER_REGISTRY-}gateway
+    image: ${DOCKER_REGISTRY-}gateway2
     container_name: gateway
     depends_on:
       - customerservice
       - orderservice
     build:
       context: .
-      dockerfile: Services/Gateway/Dockerfile
+      dockerfile: Services/Gateway2/Dockerfile
 
 
 
@@ -50,6 +50,7 @@ services:
   elasticsearch:
     image: elasticsearch:7.14.1
     container_name: elasticsearch
+    
   
   logstash:
     image: logstash:7.14.1

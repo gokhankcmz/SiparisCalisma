@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Common\HealthCheckLibrary\HealthCheckLibrary.csproj" />
       <ProjectReference Include="..\..\Common\Repository\Repository.csproj" />
     </ItemGroup>
 

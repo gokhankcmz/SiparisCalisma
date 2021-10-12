@@ -51,7 +51,7 @@ namespace OrderService
 
         public void CheckIfSelfOrder(Order order, Guid customerId)
         {
-            if (customerId.Equals(order.CustomerId))
+            if (!customerId.Equals(order.CustomerId))
             {
                 throw new UnAuthorized();
             }

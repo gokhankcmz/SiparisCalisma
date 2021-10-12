@@ -27,14 +27,6 @@ namespace CustomerService.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateCustomer([FromBody]CreateCustomerDto createCustomerDto)
-        {
-            var customerEntity = _mapper.Map<Customer>(createCustomerDto);
-            await _applicationService.CreateAsync(customerEntity);
-            return CreatedAtRoute("CustomerById", new { customerId = customerEntity.Id },
-                 _mapper.Map<CustomerResponseDto>(customerEntity));
-        }
 
         
         [HttpGet("{customerId:guid}", Name = "CustomerById")]
@@ -52,16 +44,18 @@ namespace CustomerService.Controllers
             return Ok(_mapper.Map<List<CustomerCollectionDto>>(customers));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateCustomer([FromBody]CreateCustomerDto createCustomerDto)
+        {
+            var customerEntity = _mapper.Map<Customer>(createCustomerDto);
+            await _applicationService.CreateAsync(customerEntity);
+            return CreatedAtRoute("CustomerById", new { customerId = customerEntity.Id },
+                _mapper.Map<CustomerResponseDto>(customerEntity));
+        }
         
         [HttpPut("{customerId:guid}")]
         public async Task<IActionResult> UpdateCustomer(Guid customerId, [FromBody] UpdateCustomerDto updateCustomerDto)
         {
-            
-            // var customerEntity = (await _repository.GetByCondition(x=> x.Email==updateCustomerDto.Email)).FirstOrDefault();
-            // if (customerEntity != null)
-            // {
-            //     throw new EmailIsNotUniqueException(nameof(Customer), updateCustomerDto.Email);
-            // }
             var customerEntity = await _applicationService.GetAsync(customerId);
             _mapper.Map(updateCustomerDto, customerEntity);
             await _applicationService.ReplaceAsync(customerEntity);

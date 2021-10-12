@@ -1873,6 +1873,7 @@
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "5.0.1",
           "Newtonsoft.Json": "13.0.1",
+          "Serilog": "2.10.0",
           "Serilog.AspNetCore": "4.1.0",
           "Serilog.Enrichers.Environment": "2.2.0",
           "Serilog.Sinks.Confluent.Kafka": "1.9.2",

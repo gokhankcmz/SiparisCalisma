@@ -258,3 +258,5 @@ C:\Users\gk-89\RiderProjects\OrderCase\Services\CustomerService\bin\Debug\net5.0
 C:\Users\gk-89\RiderProjects\OrderCase\Services\CustomerService\bin\Debug\net5.0\runtimes\win-x86\native\msvcp120.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Services\CustomerService\bin\Debug\net5.0\runtimes\win-x86\native\msvcr120.dll
 C:\Users\gk-89\RiderProjects\OrderCase\Services\CustomerService\bin\Debug\net5.0\runtimes\win-x86\native\zlib.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Services\CustomerService\bin\Debug\net5.0\HealthCheckLibrary.dll
+C:\Users\gk-89\RiderProjects\OrderCase\Services\CustomerService\bin\Debug\net5.0\HealthCheckLibrary.pdb

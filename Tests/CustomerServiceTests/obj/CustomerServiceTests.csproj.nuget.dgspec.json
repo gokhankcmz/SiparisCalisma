@@ -162,6 +162,26 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Serilog.Sinks.Confluent.Kafka": {
+              "target": "Package",
+              "version": "[1.9.2, )"
+            },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[8.4.1, )"
             }
           },
           "imports": [
@@ -175,9 +195,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -229,6 +246,86 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\HealthCheckLibrary\\HealthCheckLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\HealthCheckLibrary\\HealthCheckLibrary.csproj",
+        "projectName": "HealthCheckLibrary",
+        "projectPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\HealthCheckLibrary\\HealthCheckLibrary.csproj",
+        "packagesPath": "C:\\Users\\gk-89\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\HealthCheckLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\gk-89\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AspNetCore.HealthChecks.Elasticsearch": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "AspNetCore.HealthChecks.Kafka": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "AspNetCore.HealthChecks.MongoDb": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "AspNetCore.HealthChecks.UI": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "AspNetCore.HealthChecks.UI.Client": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -311,9 +408,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -597,6 +691,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\HealthCheckLibrary\\HealthCheckLibrary.csproj": {
+                "projectPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\HealthCheckLibrary\\HealthCheckLibrary.csproj"
+              },
               "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\Repository\\Repository.csproj": {
                 "projectPath": "C:\\Users\\gk-89\\RiderProjects\\OrderCase\\Common\\Repository\\Repository.csproj"
               }
@@ -614,6 +711,10 @@
           "targetAlias": "net5.0",
           "dependencies": {
             "AspNetCore.HealthChecks.Elasticsearch": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "AspNetCore.HealthChecks.Kafka": {
               "target": "Package",
               "version": "[5.0.1, )"
             },
@@ -640,18 +741,6 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.10.13, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[4.1.0, )"
-            },
-            "Serilog.Enrichers.Environment": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Serilog.Sinks.Elasticsearch": {
-              "target": "Package",
-              "version": "[8.4.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -767,9 +856,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

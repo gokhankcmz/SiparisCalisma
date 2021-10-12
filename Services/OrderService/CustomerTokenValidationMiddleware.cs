@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CommonLib.Helpers.Jwt;
-using CommonLib.Models.ErrorModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
 
 namespace OrderService
 {

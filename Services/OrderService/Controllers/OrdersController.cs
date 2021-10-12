@@ -35,12 +35,12 @@ namespace OrderService.Controllers
         }
 
 
-        [HttpGet("{orderId:guid}", Name = "OrderById")]
+        [HttpGet("{orderId}", Name = "OrderById")]
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> GetOrder(Guid orderId)
         {
             var orderEntity = await _applicationService.GetAsync(orderId);
-            _applicationService.CheckIfSelfOrder(orderEntity, (Guid) HttpContext.Items["customerId"]);
+            _applicationService.CheckIfSelfOrder(orderEntity, Guid.Parse(HttpContext.Items["customerId"].ToString()));
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
         }
 
@@ -51,24 +51,24 @@ namespace OrderService.Controllers
             return Ok(_mapper.Map<List<OrderCollectionDto>>(orders));
         }
 
-        [HttpPut("{orderId:guid}")]
+        [HttpPut("{orderId}")]
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> UpdateOrder(Guid orderId, [FromBody] UpdateOrderDto updateOrderDto)
         {
             var orderEntity = await _applicationService.GetAsync(orderId);
-            _applicationService.CheckIfSelfOrder(orderEntity, (Guid) HttpContext.Items["customerId"]);
+            _applicationService.CheckIfSelfOrder(orderEntity, Guid.Parse(HttpContext.Items["customerId"].ToString()));
             _mapper.Map(updateOrderDto, orderEntity);
             await _applicationService.ReplaceAsync(orderEntity);
             return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
         }
 
 
-        [HttpDelete("{orderId:guid}")]
+        [HttpDelete("{orderId}")]
         [ServiceFilter(typeof(ValidateOrderExistAttribute))]
         public async Task<IActionResult> DeleteOrder(Guid orderId)
         {
             var orderEntity = await _applicationService.GetAsync(orderId);
-            _applicationService.CheckIfSelfOrder(orderEntity, (Guid) HttpContext.Items["customerId"]);
+            _applicationService.CheckIfSelfOrder(orderEntity, Guid.Parse(HttpContext.Items["customerId"].ToString()));
             _applicationService.Delete(orderEntity);
             //return Ok(_mapper.Map<OrderResponseDto>(orderEntity));
             return Ok();

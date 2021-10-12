@@ -1,14 +1,6 @@
-using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Serilog.Events;
-using Serilog.Formatting;
-using Serilog.Formatting.Compact;
-using Serilog.Formatting.Display;
-using Serilog.Formatting.Elasticsearch;
-using Serilog.Formatting.Json;
-using Serilog.Sinks.Elasticsearch;
 using Serilog.Sinks.Kafka;
 
 namespace OrderService

@@ -36,6 +36,7 @@ namespace CommonLib.Helpers.Jwt
         {
             var token = headerDictionary["Authorization"].ToString();
             token = token.Replace("Bearer ", "");
+            Console.WriteLine($"Token => {token}");
             exception ??= new UnAuthorized();
             try
             {
@@ -66,10 +67,7 @@ namespace CommonLib.Helpers.Jwt
                 ValidateIssuerSigningKey = true,
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                ValidIssuer = Configuration.GetSection("validIssuer").Value,
-                ValidAudience = Configuration.GetSection("validAudience").Value,
-                IssuerSigningKey = new
-                SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetSection("JwtSettings:secret").Value))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A.VeryLongAndSecretKey"))
             
             };
     }

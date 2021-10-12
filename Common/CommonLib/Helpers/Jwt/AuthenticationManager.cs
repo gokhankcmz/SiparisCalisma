@@ -27,9 +27,7 @@ namespace CommonLib.Helpers.Jwt
                 {
                     new (ClaimTypes.NameIdentifier, document.Id.ToString()),
                 }),
-                Expires = DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings.GetSection("expires").Value)),
-                Issuer = jwtSettings.GetSection("validIssuer").Value,
-                Audience= jwtSettings.GetSection("validAudience").Value,
+                Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings.GetSection("expires").Value)),
                 SigningCredentials = GetSigningCredentials()
 
             };
